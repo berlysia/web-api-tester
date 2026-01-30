@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
 import type { ApiInfo, BaselineStatus } from '../../types/api-status';
 import styles from './Home.module.css';
+
+const baseUrl = import.meta.env.BASE_URL;
 
 const apis: ApiInfo[] = [
   {
@@ -18,7 +19,7 @@ const apis: ApiInfo[] = [
       safari: '13',
       edge: '79',
     },
-    path: '/visual-viewport',
+    path: 'visual-viewport/',
   },
   {
     id: 'virtual-keyboard',
@@ -32,7 +33,19 @@ const apis: ApiInfo[] = [
       chrome: '94',
       edge: '94',
     },
-    path: '/virtual-keyboard',
+    path: 'virtual-keyboard/',
+  },
+  {
+    id: 'viewport-keyboard',
+    name: 'Joint View',
+    description:
+      'Visual Viewport APIとVirtual Keyboard APIの両方の値を同時に確認できます。',
+    baselineStatus: 'limited',
+    browsers: {
+      chrome: '94',
+      edge: '94',
+    },
+    path: 'viewport-keyboard/',
   },
 ];
 
@@ -60,7 +73,7 @@ export function Home() {
 
       <div className={styles.apiList}>
         {apis.map((api) => (
-          <Link key={api.id} to={api.path} className={styles.apiCard}>
+          <a key={api.id} href={`${baseUrl}${api.path}`} className={styles.apiCard}>
             <div className={styles.cardHeader}>
               <span className={styles.apiName}>{api.name}</span>
               <span
@@ -70,7 +83,7 @@ export function Home() {
               </span>
             </div>
             <p className={styles.apiDescription}>{api.description}</p>
-          </Link>
+          </a>
         ))}
       </div>
     </div>

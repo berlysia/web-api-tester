@@ -1,6 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BaselineStatus } from '../../components/BaselineStatus/BaselineStatus';
+import { InteractiveWidgetSelector } from '../../components/InteractiveWidgetSelector/InteractiveWidgetSelector';
 import styles from './VisualViewport.module.css';
+
+export type InteractiveWidgetValue = 'default' | 'resizes-visual' | 'resizes-content' | 'overlays-content';
+
+interface VisualViewportProps {
+  interactiveWidget?: InteractiveWidgetValue;
+}
 
 interface ViewportProperties {
   width: number;
@@ -21,7 +28,7 @@ interface EventLogEntry {
 
 const isSupported = typeof window.visualViewport !== 'undefined';
 
-export function VisualViewport() {
+export function VisualViewport({ interactiveWidget = 'default' }: VisualViewportProps) {
   const [properties, setProperties] = useState<ViewportProperties | null>(null);
   const [eventLog, setEventLog] = useState<EventLogEntry[]>([]);
   const eventIdRef = useRef(0);
@@ -107,6 +114,11 @@ export function VisualViewport() {
         }}
         requiresSecureContext={false}
         isApiDetected={isSupported}
+      />
+
+      <InteractiveWidgetSelector
+        basePath="visual-viewport"
+        currentValue={interactiveWidget}
       />
 
       {properties && (

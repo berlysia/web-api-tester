@@ -16,7 +16,7 @@ export interface ApiInfo {
   name: string;
   description: string;
   baselineStatus: BaselineStatus;
-  mdnUrl: string;
+  mdnUrl?: string;
   caniuseUrl?: string;
   browsers: BrowserSupport;
   path: string;

@@ -1,33 +1,32 @@
-import { NavLink } from 'react-router-dom';
 import styles from './Navigation.module.css';
 
+const baseUrl = import.meta.env.BASE_URL;
+
 export function Navigation() {
+  const currentPath = window.location.pathname;
+
+  const isActive = (path: string) => currentPath.startsWith(baseUrl + path);
+
   return (
     <nav className={styles.nav}>
-      <NavLink
-        to="/visual-viewport"
-        className={({ isActive }) =>
-          `${styles.link} ${isActive ? styles.active : ''}`
-        }
+      <a
+        href={`${baseUrl}visual-viewport/`}
+        className={`${styles.link} ${isActive('visual-viewport') ? styles.active : ''}`}
       >
         Visual Viewport
-      </NavLink>
-      <NavLink
-        to="/virtual-keyboard"
-        className={({ isActive }) =>
-          `${styles.link} ${isActive ? styles.active : ''}`
-        }
+      </a>
+      <a
+        href={`${baseUrl}virtual-keyboard/`}
+        className={`${styles.link} ${isActive('virtual-keyboard') ? styles.active : ''}`}
       >
         Virtual Keyboard
-      </NavLink>
-      <NavLink
-        to="/viewport-keyboard"
-        className={({ isActive }) =>
-          `${styles.link} ${isActive ? styles.active : ''}`
-        }
+      </a>
+      <a
+        href={`${baseUrl}viewport-keyboard/`}
+        className={`${styles.link} ${isActive('viewport-keyboard') ? styles.active : ''}`}
       >
         Joint View
-      </NavLink>
+      </a>
     </nav>
   );
 }

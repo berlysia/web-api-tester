@@ -1,8 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { InteractiveWidgetSelector } from '../../components/InteractiveWidgetSelector/InteractiveWidgetSelector';
 import '../../types/virtual-keyboard.d.ts';
 import styles from './ViewportKeyboardJoint.module.css';
 
-interface VisualViewportProps {
+export type InteractiveWidgetValue = 'default' | 'resizes-visual' | 'resizes-content' | 'overlays-content';
+
+interface ViewportKeyboardJointProps {
+  interactiveWidget?: InteractiveWidgetValue;
+}
+
+interface VisualViewportData {
   width: number;
   height: number;
   offsetLeft: number;
@@ -30,8 +37,8 @@ interface EventLogEntry {
 const isVisualViewportSupported = typeof window.visualViewport !== 'undefined';
 const isVirtualKeyboardSupported = 'virtualKeyboard' in navigator;
 
-export function ViewportKeyboardJoint() {
-  const [viewportProps, setViewportProps] = useState<VisualViewportProps | null>(null);
+export function ViewportKeyboardJoint({ interactiveWidget = 'default' }: ViewportKeyboardJointProps) {
+  const [viewportProps, setViewportProps] = useState<VisualViewportData | null>(null);
   const [keyboardRect, setKeyboardRect] = useState<KeyboardRect | null>(null);
   const [overlaysContent, setOverlaysContent] = useState(false);
   const [keyboardPolicy, setKeyboardPolicy] = useState<'auto' | 'manual'>('auto');
@@ -160,6 +167,11 @@ export function ViewportKeyboardJoint() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Viewport & Keyboard Joint View</h1>
+
+      <InteractiveWidgetSelector
+        basePath="viewport-keyboard"
+        currentValue={interactiveWidget}
+      />
 
       <div className={styles.apiGrid}>
         <section className={styles.apiSection}>
