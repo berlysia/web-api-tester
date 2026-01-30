@@ -1,0 +1,102 @@
+.container {
+  max-width: 800px;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  color: #1a1a2e;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: #343a40;
+}
+
+.propertiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.propertyCard {
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.propertyName {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin: 0 0 0.25rem 0;
+}
+
+.propertyValue {
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: 'SF Mono', Monaco, monospace;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.eventLog {
+  background: #1a1a2e;
+  border-radius: 6px;
+  padding: 1rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.eventItem {
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 0.85rem;
+  color: #a8dadc;
+  margin: 0.25rem 0;
+}
+
+.eventType {
+  color: #f1c40f;
+  font-weight: 500;
+}
+
+.noEvents {
+  color: #6c757d;
+  font-style: italic;
+}
+
+.demoArea {
+  background: #e9ecef;
+  border-radius: 6px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.demoText {
+  color: #495057;
+  margin: 0 0 1rem 0;
+}
+
+.input {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #dee2e6;
+  border-radius: 6px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.clearButton {
+  margin-top: 1rem;
+}

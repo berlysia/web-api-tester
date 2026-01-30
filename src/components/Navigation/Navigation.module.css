@@ -1,0 +1,20 @@
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: white;
+}
+
+.active {
+  color: white;
+  font-weight: 500;
+}

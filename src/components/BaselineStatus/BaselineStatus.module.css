@@ -1,0 +1,158 @@
+.container {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.widelyAvailable {
+  background: #d4edda;
+  color: #155724;
+}
+
+.newlyAvailable {
+  background: #cce5ff;
+  color: #004085;
+}
+
+.limited {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.notAvailable {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.apiName {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.detectionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 6px;
+}
+
+.detectionSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detectionTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #6c757d;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.detectionItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.detectionLabel {
+  color: #495057;
+}
+
+.required {
+  color: #856404;
+  font-weight: 500;
+}
+
+.notRequired {
+  color: #495057;
+}
+
+.satisfied {
+  color: #155724;
+  font-weight: 500;
+}
+
+.notSatisfied {
+  color: #721c24;
+  font-weight: 500;
+}
+
+.availabilityBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.available {
+  background: #d4edda;
+  color: #155724;
+}
+
+.context-blocked {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.not-supported {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.browsers {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.browser {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #495057;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
+.link {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

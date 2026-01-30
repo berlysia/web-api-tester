@@ -1,0 +1,241 @@
+.container {
+  max-width: 900px;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  color: #1a1a2e;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: #343a40;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.statusBadge {
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.supported {
+  background: #d4edda;
+  color: #155724;
+}
+
+.unsupported {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.apiGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 700px) {
+  .apiGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.apiSection {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.propertiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.75rem;
+}
+
+.propertyCard {
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.propertyName {
+  font-size: 0.75rem;
+  color: #6c757d;
+  margin: 0 0 0.25rem 0;
+}
+
+.propertyValue {
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'SF Mono', Monaco, monospace;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.controlSection {
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.controlRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toggleLabel {
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+.switch {
+  width: 44px;
+  height: 24px;
+  background: #dee2e6;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.switch.active {
+  background: #007bff;
+}
+
+.switch.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.switchKnob {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.switch.active .switchKnob {
+  transform: translateX(20px);
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.buttons button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.buttons button:disabled {
+  background: #dee2e6;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.eventLog {
+  background: #1a1a2e;
+  border-radius: 6px;
+  padding: 1rem;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.eventItem {
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 0.8rem;
+  color: #a8dadc;
+  margin: 0.25rem 0;
+}
+
+.eventSource {
+  font-weight: 600;
+}
+
+.eventSource.visualViewport {
+  color: #69b3e7;
+}
+
+.eventSource.virtualKeyboard {
+  color: #98d8aa;
+}
+
+.eventType {
+  color: #f1c40f;
+  font-weight: 500;
+}
+
+.noEvents {
+  color: #6c757d;
+  font-style: italic;
+}
+
+.demoArea {
+  background: #e9ecef;
+  border-radius: 6px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.demoText {
+  color: #495057;
+  margin: 0 0 1rem 0;
+}
+
+.input {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #dee2e6;
+  border-radius: 6px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.clearButton {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  background: #6c757d;
+  color: white;
+  cursor: pointer;
+}
