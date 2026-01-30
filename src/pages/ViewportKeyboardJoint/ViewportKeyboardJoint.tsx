@@ -195,6 +195,18 @@ export function ViewportKeyboardJoint() {
               </p>
             </div>
             <div className={styles.propertyCard}>
+              <p className={styles.propertyName}>pageLeft</p>
+              <p className={styles.propertyValue}>
+                {viewportProps ? `${viewportProps.pageLeft.toFixed(1)}px` : 'N/A'}
+              </p>
+            </div>
+            <div className={styles.propertyCard}>
+              <p className={styles.propertyName}>pageTop</p>
+              <p className={styles.propertyValue}>
+                {viewportProps ? `${viewportProps.pageTop.toFixed(1)}px` : 'N/A'}
+              </p>
+            </div>
+            <div className={styles.propertyCard}>
               <p className={styles.propertyName}>scale</p>
               <p className={styles.propertyValue}>
                 {viewportProps ? `${viewportProps.scale.toFixed(2)}x` : 'N/A'}
