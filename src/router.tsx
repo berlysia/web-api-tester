@@ -5,7 +5,8 @@ import { VisualViewport } from './pages/VisualViewport/VisualViewport';
 import { VirtualKeyboard } from './pages/VirtualKeyboard/VirtualKeyboard';
 import { ViewportKeyboardJoint } from './pages/ViewportKeyboardJoint/ViewportKeyboardJoint';
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+  [
   {
     path: '/',
     element: (
@@ -38,4 +39,8 @@ export const router = createBrowserRouter([
       </Layout>
     ),
   },
-]);
+  ],
+  {
+    basename: import.meta.env.BASE_URL,
+  }
+);
