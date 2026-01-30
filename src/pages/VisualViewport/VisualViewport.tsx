@@ -121,62 +121,48 @@ export function VisualViewport({ interactiveWidget = 'default' }: VisualViewport
         currentValue={interactiveWidget}
       />
 
-      {properties && (
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Viewport Properties</h2>
-          <div className={styles.propertiesGrid}>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>width</p>
-              <p className={styles.propertyValue}>
-                {properties.width.toFixed(0)}px
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>height</p>
-              <p className={styles.propertyValue}>
-                {properties.height.toFixed(0)}px
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>offsetLeft</p>
-              <p className={styles.propertyValue}>
-                {properties.offsetLeft.toFixed(1)}px
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>offsetTop</p>
-              <p className={styles.propertyValue}>
-                {properties.offsetTop.toFixed(1)}px
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>pageLeft</p>
-              <p className={styles.propertyValue}>
-                {properties.pageLeft.toFixed(1)}px
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>pageTop</p>
-              <p className={styles.propertyValue}>
-                {properties.pageTop.toFixed(1)}px
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>scale</p>
-              <p className={styles.propertyValue}>
-                {properties.scale.toFixed(2)}x
-              </p>
-            </div>
+      {/* Test Area with values - positioned for mobile visibility */}
+      <section className={styles.testSection}>
+        <div className={styles.compactValues}>
+          <div className={styles.valueRow}>
+            <span className={styles.valueLabel}>size:</span>
+            <span className={styles.valueData}>
+              {properties ? `${properties.width.toFixed(0)} × ${properties.height.toFixed(0)}` : 'N/A'}
+            </span>
           </div>
-        </section>
-      )}
+          <div className={styles.valueRow}>
+            <span className={styles.valueLabel}>offset:</span>
+            <span className={styles.valueData}>
+              {properties ? `(${properties.offsetLeft.toFixed(1)}, ${properties.offsetTop.toFixed(1)})` : 'N/A'}
+            </span>
+          </div>
+          <div className={styles.valueRow}>
+            <span className={styles.valueLabel}>page:</span>
+            <span className={styles.valueData}>
+              {properties ? `(${properties.pageLeft.toFixed(1)}, ${properties.pageTop.toFixed(1)})` : 'N/A'}
+            </span>
+          </div>
+          <div className={styles.valueRow}>
+            <span className={styles.valueLabel}>scale:</span>
+            <span className={styles.valueData}>
+              {properties ? `${properties.scale.toFixed(2)}x` : 'N/A'}
+            </span>
+          </div>
+        </div>
+
+        <input
+          type="text"
+          className={styles.input}
+          placeholder="Tap to open keyboard..."
+        />
+      </section>
 
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Event Log</h2>
         <div className={styles.eventLog}>
           {eventLog.length === 0 ? (
             <p className={styles.noEvents}>
-              No events yet. Try pinch-zooming or using the input below to
+              No events yet. Try pinch-zooming or using the input above to
               trigger the soft keyboard.
             </p>
           ) : (
@@ -200,23 +186,6 @@ export function VisualViewport({ interactiveWidget = 'default' }: VisualViewport
             Clear Log
           </button>
         )}
-      </section>
-
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Test Area</h2>
-        <div className={styles.demoArea}>
-          <p className={styles.demoText}>
-            On mobile devices, tap the input below to trigger the soft keyboard
-            and observe viewport changes.
-            <br />
-            You can also pinch-zoom on touch devices to see scale changes.
-          </p>
-          <input
-            type="text"
-            className={styles.input}
-            placeholder="Tap to open keyboard..."
-          />
-        </div>
       </section>
     </div>
   );

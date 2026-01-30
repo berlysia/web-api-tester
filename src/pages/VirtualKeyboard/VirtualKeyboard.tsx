@@ -112,78 +112,79 @@ export function VirtualKeyboard() {
         isApiDetected={isApiDetected}
       />
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Bounding Rect</h2>
-        <div className={styles.propertiesGrid}>
-          <div className={styles.propertyCard}>
-            <p className={styles.propertyName}>x</p>
-            <p className={styles.propertyValue}>
-              {isSupported ? `${(boundingRect?.x ?? 0).toFixed(0)}px` : 'N/A'}
-            </p>
-          </div>
-          <div className={styles.propertyCard}>
-            <p className={styles.propertyName}>y</p>
-            <p className={styles.propertyValue}>
-              {isSupported ? `${(boundingRect?.y ?? 0).toFixed(0)}px` : 'N/A'}
-            </p>
-          </div>
-          <div className={styles.propertyCard}>
-            <p className={styles.propertyName}>width</p>
-            <p className={styles.propertyValue}>
+      {/* Test Area with compact values */}
+      <section className={styles.testSection}>
+        <div className={styles.compactValues}>
+          <div className={styles.valueRow}>
+            <span className={styles.valueLabel}>rect:</span>
+            <span className={styles.valueData}>
               {isSupported
-                ? `${(boundingRect?.width ?? 0).toFixed(0)}px`
+                ? `(${boundingRect?.x ?? 0}, ${boundingRect?.y ?? 0})`
                 : 'N/A'}
-            </p>
+            </span>
           </div>
-          <div className={styles.propertyCard}>
-            <p className={styles.propertyName}>height</p>
-            <p className={styles.propertyValue}>
+          <div className={styles.valueRow}>
+            <span className={styles.valueLabel}>size:</span>
+            <span className={styles.valueData}>
               {isSupported
-                ? `${(boundingRect?.height ?? 0).toFixed(0)}px`
+                ? `${boundingRect?.width ?? 0} × ${boundingRect?.height ?? 0}`
                 : 'N/A'}
-            </p>
+            </span>
+          </div>
+          <div className={styles.valueRow}>
+            <span className={styles.valueLabel}>overlays:</span>
+            <span className={styles.valueData}>
+              {isSupported ? (overlaysContent ? 'true' : 'false') : 'N/A'}
+            </span>
+          </div>
+          <div className={styles.valueRow}>
+            <span className={styles.valueLabel}>policy:</span>
+            <span className={styles.valueData}>{keyboardPolicy}</span>
           </div>
         </div>
-      </section>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Controls</h2>
-        <div className={styles.controlSection}>
-          <div className={styles.controlRow}>
-            <div className={styles.toggle}>
-              <span className={styles.toggleLabel}>overlaysContent:</span>
-              <div
-                className={`${styles.switch} ${overlaysContent ? styles.active : ''} ${!isSupported ? styles.disabled : ''}`}
-                onClick={isSupported ? toggleOverlaysContent : undefined}
-              >
-                <div className={styles.switchKnob} />
-              </div>
-              <span>
-                {isSupported ? (overlaysContent ? 'true' : 'false') : 'N/A'}
-              </span>
-            </div>
-          </div>
-          <div className={styles.controlRow}>
-            <div className={styles.toggle}>
-              <span className={styles.toggleLabel}>virtualkeyboardpolicy:</span>
-              <div
-                className={`${styles.switch} ${keyboardPolicy === 'manual' ? styles.active : ''}`}
-                onClick={() => setKeyboardPolicy(keyboardPolicy === 'auto' ? 'manual' : 'auto')}
-              >
-                <div className={styles.switchKnob} />
-              </div>
-              <span>{keyboardPolicy}</span>
-            </div>
-          </div>
-          <div className={styles.buttons}>
-            <button onClick={showKeyboard} disabled={!isSupported}>
-              show()
-            </button>
-            <button onClick={hideKeyboard} disabled={!isSupported}>
-              hide()
-            </button>
-          </div>
+        <div className={styles.controls}>
+          <label className={styles.controlItem}>
+            <input
+              type="checkbox"
+              checked={overlaysContent}
+              onChange={toggleOverlaysContent}
+              disabled={!isSupported}
+            />
+            <span>overlaysContent</span>
+          </label>
+          <label className={styles.controlItem}>
+            <input
+              type="checkbox"
+              checked={keyboardPolicy === 'manual'}
+              onChange={() => setKeyboardPolicy(keyboardPolicy === 'auto' ? 'manual' : 'auto')}
+            />
+            <span>manual policy</span>
+          </label>
+          <button
+            className={styles.smallButton}
+            onClick={showKeyboard}
+            disabled={!isSupported}
+          >
+            show()
+          </button>
+          <button
+            className={styles.smallButton}
+            onClick={hideKeyboard}
+            disabled={!isSupported}
+          >
+            hide()
+          </button>
         </div>
+
+        <input
+          type="text"
+          className={styles.input}
+          placeholder="Tap to open virtual keyboard..."
+          virtualkeyboardpolicy={keyboardPolicy}
+          onFocus={keyboardPolicy === 'manual' ? showKeyboard : undefined}
+          onBlur={keyboardPolicy === 'manual' ? hideKeyboard : undefined}
+        />
       </section>
 
       <section className={styles.section}>
@@ -195,7 +196,7 @@ export function VirtualKeyboard() {
             </p>
           ) : eventLog.length === 0 ? (
             <p className={styles.noEvents}>
-              No events yet. Focus the input below to trigger keyboard geometry
+              No events yet. Focus the input above to trigger keyboard geometry
               changes.
             </p>
           ) : (
@@ -222,54 +223,21 @@ export function VirtualKeyboard() {
       </section>
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Test Area</h2>
-        <div className={styles.demoArea}>
-          <p className={styles.demoText}>
-            On mobile devices with Chrome/Edge, tap the input below to trigger
-            the virtual keyboard. Observe how boundingRect changes and
-            geometrychange events are fired.
+        <details className={styles.cssVarDetails}>
+          <summary className={styles.cssVarSummary}>CSS Environment Variables</summary>
+          <p className={styles.cssVarDesc}>
+            When overlaysContent is true, these CSS environment variables can
+            be used to adjust layout:
           </p>
-          <input
-            type="text"
-            className={styles.input}
-            placeholder="Tap to open virtual keyboard..."
-            virtualkeyboardpolicy={keyboardPolicy}
-            onFocus={keyboardPolicy === 'manual' ? showKeyboard : undefined}
-            onBlur={keyboardPolicy === 'manual' ? hideKeyboard : undefined}
-          />
-
-          <div className={styles.cssVarDemo}>
-            <h3 className={styles.cssVarTitle}>CSS Environment Variables</h3>
-            <p
-              style={{
-                fontSize: '0.85rem',
-                color: '#6c757d',
-                margin: '0 0 0.75rem 0',
-              }}
-            >
-              When overlaysContent is true, these CSS environment variables can
-              be used to adjust layout:
-            </p>
-            <div className={styles.cssVarGrid}>
-              <code className={styles.cssVarItem}>env(keyboard-inset-top)</code>
-              <code className={styles.cssVarItem}>
-                env(keyboard-inset-right)
-              </code>
-              <code className={styles.cssVarItem}>
-                env(keyboard-inset-bottom)
-              </code>
-              <code className={styles.cssVarItem}>
-                env(keyboard-inset-left)
-              </code>
-              <code className={styles.cssVarItem}>
-                env(keyboard-inset-width)
-              </code>
-              <code className={styles.cssVarItem}>
-                env(keyboard-inset-height)
-              </code>
-            </div>
+          <div className={styles.cssVarGrid}>
+            <code className={styles.cssVarItem}>env(keyboard-inset-top)</code>
+            <code className={styles.cssVarItem}>env(keyboard-inset-right)</code>
+            <code className={styles.cssVarItem}>env(keyboard-inset-bottom)</code>
+            <code className={styles.cssVarItem}>env(keyboard-inset-left)</code>
+            <code className={styles.cssVarItem}>env(keyboard-inset-width)</code>
+            <code className={styles.cssVarItem}>env(keyboard-inset-height)</code>
           </div>
-        </div>
+        </details>
       </section>
     </div>
   );

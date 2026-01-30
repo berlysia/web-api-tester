@@ -3,125 +3,133 @@
 }
 
 .title {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1rem 0;
   color: #1a1a2e;
 }
 
 .section {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .sectionTitle {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.75rem 0;
   color: #343a40;
 }
 
-.propertiesGrid {
+/* Test section - main interaction area */
+.testSection {
+  background: #f0f2f5;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.compactValues {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1rem;
-}
-
-.propertyCard {
-  background: #f8f9fa;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  background: #fff;
   border-radius: 6px;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
-.propertyName {
-  font-size: 0.85rem;
+.valueRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 0.4rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.valueLabel {
+  font-size: 0.75rem;
   color: #6c757d;
-  margin: 0 0 0.25rem 0;
+  font-weight: 500;
 }
 
-.propertyValue {
-  font-size: 1.25rem;
-  font-weight: 600;
+.valueData {
   font-family: 'SF Mono', Monaco, monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
   color: #1a1a2e;
+}
+
+/* Controls row */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background: #fff;
+  border-radius: 6px;
+}
+
+.controlItem {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: #495057;
+  cursor: pointer;
+}
+
+.controlItem input {
   margin: 0;
 }
 
-.controlSection {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.controlRow {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.toggleLabel {
-  font-size: 0.9rem;
-  color: #495057;
-}
-
-.switch {
-  position: relative;
-  width: 48px;
-  height: 24px;
-  background: #dee2e6;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.switch.active {
+.smallButton {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-family: 'SF Mono', Monaco, monospace;
+  border: none;
+  border-radius: 4px;
   background: #007bff;
+  color: white;
+  cursor: pointer;
 }
 
-.switchKnob {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  background: white;
-  border-radius: 50%;
-  transition: transform 0.2s;
-}
-
-.switch.active .switchKnob {
-  transform: translateX(24px);
-}
-
-.switch.disabled {
-  opacity: 0.5;
+.smallButton:disabled {
+  background: #dee2e6;
+  color: #6c757d;
   cursor: not-allowed;
 }
 
-.buttons {
-  display: flex;
-  gap: 0.75rem;
+.input {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 2px solid #dee2e6;
+  border-radius: 6px;
+  box-sizing: border-box;
 }
 
+.input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Event log */
 .eventLog {
   background: #1a1a2e;
   border-radius: 6px;
-  padding: 1rem;
-  max-height: 200px;
+  padding: 0.75rem;
+  max-height: 150px;
   overflow-y: auto;
 }
 
 .eventItem {
   font-family: 'SF Mono', Monaco, monospace;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: #a8dadc;
-  margin: 0.25rem 0;
+  margin: 0.15rem 0;
 }
 
 .eventType {
@@ -132,61 +140,53 @@
 .noEvents {
   color: #6c757d;
   font-style: italic;
+  font-size: 0.85rem;
 }
 
-.demoArea {
-  background: #e9ecef;
+.clearButton {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+/* CSS Environment Variables section */
+.cssVarDetails {
+  background: #fff;
   border-radius: 6px;
-  padding: 1.5rem;
-}
-
-.demoText {
-  color: #495057;
-  margin: 0 0 1rem 0;
-}
-
-.input {
-  width: 100%;
   padding: 0.75rem;
-  font-size: 1rem;
-  border: 2px solid #dee2e6;
-  border-radius: 6px;
-  margin-bottom: 1rem;
 }
 
-.input:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
-.cssVarDemo {
-  background: white;
-  border-radius: 6px;
-  padding: 1rem;
-}
-
-.cssVarTitle {
-  font-size: 0.9rem;
+.cssVarSummary {
   font-weight: 600;
-  margin: 0 0 0.75rem 0;
   color: #343a40;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.cssVarDesc {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin: 0.5rem 0;
 }
 
 .cssVarGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.4rem;
 }
 
 .cssVarItem {
   font-family: 'SF Mono', Monaco, monospace;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #6c757d;
   background: #f8f9fa;
-  padding: 0.5rem;
+  padding: 0.4rem;
   border-radius: 4px;
 }
 
-.clearButton {
-  margin-top: 1rem;
+/* Mobile optimization */
+@media (max-width: 480px) {
+  .compactValues {
+    grid-template-columns: 1fr;
+  }
 }

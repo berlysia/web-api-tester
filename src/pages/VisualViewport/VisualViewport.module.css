@@ -20,32 +20,61 @@
   color: #343a40;
 }
 
-.propertiesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1rem;
-}
-
-.propertyCard {
-  background: #f8f9fa;
-  border-radius: 6px;
+/* Test section with compact values above input */
+.testSection {
+  background: #e9ecef;
+  border-radius: 8px;
   padding: 1rem;
+  margin-bottom: 2rem;
 }
 
-.propertyName {
-  font-size: 0.85rem;
+.compactValues {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  background: #fff;
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.valueRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background: #f8f9fa;
+}
+
+.valueLabel {
+  font-size: 0.8rem;
   color: #6c757d;
-  margin: 0 0 0.25rem 0;
+  font-weight: 500;
 }
 
-.propertyValue {
-  font-size: 1.25rem;
-  font-weight: 600;
+.valueData {
   font-family: 'SF Mono', Monaco, monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: #1a1a2e;
-  margin: 0;
 }
 
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #dee2e6;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Event log */
 .eventLog {
   background: #1a1a2e;
   border-radius: 6px;
@@ -71,32 +100,21 @@
   font-style: italic;
 }
 
-.demoArea {
-  background: #e9ecef;
-  border-radius: 6px;
-  padding: 1.5rem;
-  text-align: center;
-}
-
-.demoText {
-  color: #495057;
-  margin: 0 0 1rem 0;
-}
-
-.input {
-  width: 100%;
-  max-width: 300px;
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: 2px solid #dee2e6;
-  border-radius: 6px;
-}
-
-.input:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
 .clearButton {
   margin-top: 1rem;
+}
+
+/* Mobile optimization */
+@media (max-width: 480px) {
+  .compactValues {
+    grid-template-columns: 1fr;
+  }
+
+  .valueRow {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .valueData {
+    font-size: 1rem;
+  }
 }

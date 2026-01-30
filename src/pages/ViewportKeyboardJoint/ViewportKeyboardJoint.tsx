@@ -173,144 +173,131 @@ export function ViewportKeyboardJoint({ interactiveWidget = 'default' }: Viewpor
         currentValue={interactiveWidget}
       />
 
-      <div className={styles.apiGrid}>
-        <section className={styles.apiSection}>
-          <h2 className={styles.sectionTitle}>
-            Visual Viewport
-            <span className={`${styles.statusBadge} ${isVisualViewportSupported ? styles.supported : styles.unsupported}`}>
-              {isVisualViewportSupported ? 'Supported' : 'Not Supported'}
-            </span>
-          </h2>
-          <div className={styles.propertiesGrid}>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>width</p>
-              <p className={styles.propertyValue}>
-                {viewportProps ? `${viewportProps.width.toFixed(0)}px` : 'N/A'}
-              </p>
+      {/* Main test area with compact values */}
+      <section className={styles.testSection}>
+        <div className={styles.valuesContainer}>
+          {/* Visual Viewport values */}
+          <div className={styles.valueGroup}>
+            <div className={styles.groupHeader}>
+              <span className={styles.groupLabel}>Visual Viewport</span>
+              <span className={isVisualViewportSupported ? styles.supported : styles.unsupported}>
+                {isVisualViewportSupported ? '✓' : '✗'}
+              </span>
             </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>height</p>
-              <p className={styles.propertyValue}>
-                {viewportProps ? `${viewportProps.height.toFixed(0)}px` : 'N/A'}
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>offsetLeft</p>
-              <p className={styles.propertyValue}>
-                {viewportProps ? `${viewportProps.offsetLeft.toFixed(1)}px` : 'N/A'}
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>offsetTop</p>
-              <p className={styles.propertyValue}>
-                {viewportProps ? `${viewportProps.offsetTop.toFixed(1)}px` : 'N/A'}
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>pageLeft</p>
-              <p className={styles.propertyValue}>
-                {viewportProps ? `${viewportProps.pageLeft.toFixed(1)}px` : 'N/A'}
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>pageTop</p>
-              <p className={styles.propertyValue}>
-                {viewportProps ? `${viewportProps.pageTop.toFixed(1)}px` : 'N/A'}
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>scale</p>
-              <p className={styles.propertyValue}>
-                {viewportProps ? `${viewportProps.scale.toFixed(2)}x` : 'N/A'}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.apiSection}>
-          <h2 className={styles.sectionTitle}>
-            Virtual Keyboard
-            <span className={`${styles.statusBadge} ${isVirtualKeyboardSupported ? styles.supported : styles.unsupported}`}>
-              {isVirtualKeyboardSupported ? 'Supported' : 'Not Supported'}
-            </span>
-          </h2>
-          <div className={styles.propertiesGrid}>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>x</p>
-              <p className={styles.propertyValue}>
-                {isVirtualKeyboardSupported ? `${(keyboardRect?.x ?? 0).toFixed(0)}px` : 'N/A'}
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>y</p>
-              <p className={styles.propertyValue}>
-                {isVirtualKeyboardSupported ? `${(keyboardRect?.y ?? 0).toFixed(0)}px` : 'N/A'}
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>width</p>
-              <p className={styles.propertyValue}>
-                {isVirtualKeyboardSupported ? `${(keyboardRect?.width ?? 0).toFixed(0)}px` : 'N/A'}
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>height</p>
-              <p className={styles.propertyValue}>
-                {isVirtualKeyboardSupported ? `${(keyboardRect?.height ?? 0).toFixed(0)}px` : 'N/A'}
-              </p>
-            </div>
-            <div className={styles.propertyCard}>
-              <p className={styles.propertyName}>overlaysContent</p>
-              <p className={styles.propertyValue}>
-                {isVirtualKeyboardSupported ? (overlaysContent ? 'true' : 'false') : 'N/A'}
-              </p>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Controls</h2>
-        <div className={styles.controlSection}>
-          <div className={styles.controlRow}>
-            <div className={styles.toggle}>
-              <span className={styles.toggleLabel}>overlaysContent:</span>
-              <div
-                className={`${styles.switch} ${overlaysContent ? styles.active : ''} ${!isVirtualKeyboardSupported ? styles.disabled : ''}`}
-                onClick={isVirtualKeyboardSupported ? toggleOverlaysContent : undefined}
-              >
-                <div className={styles.switchKnob} />
+            <div className={styles.valueGrid}>
+              <div className={styles.valueItem}>
+                <span className={styles.label}>size</span>
+                <span className={styles.value}>
+                  {viewportProps ? `${viewportProps.width.toFixed(0)}×${viewportProps.height.toFixed(0)}` : 'N/A'}
+                </span>
               </div>
-              <span>{isVirtualKeyboardSupported ? (overlaysContent ? 'true' : 'false') : 'N/A'}</span>
-            </div>
-            <div className={styles.toggle}>
-              <span className={styles.toggleLabel}>virtualkeyboardpolicy:</span>
-              <div
-                className={`${styles.switch} ${keyboardPolicy === 'manual' ? styles.active : ''}`}
-                onClick={() => setKeyboardPolicy(keyboardPolicy === 'auto' ? 'manual' : 'auto')}
-              >
-                <div className={styles.switchKnob} />
+              <div className={styles.valueItem}>
+                <span className={styles.label}>offset</span>
+                <span className={styles.value}>
+                  {viewportProps ? `(${viewportProps.offsetLeft.toFixed(0)}, ${viewportProps.offsetTop.toFixed(0)})` : 'N/A'}
+                </span>
               </div>
-              <span>{keyboardPolicy}</span>
+              <div className={styles.valueItem}>
+                <span className={styles.label}>page</span>
+                <span className={styles.value}>
+                  {viewportProps ? `(${viewportProps.pageLeft.toFixed(0)}, ${viewportProps.pageTop.toFixed(0)})` : 'N/A'}
+                </span>
+              </div>
+              <div className={styles.valueItem}>
+                <span className={styles.label}>scale</span>
+                <span className={styles.value}>
+                  {viewportProps ? `${viewportProps.scale.toFixed(2)}x` : 'N/A'}
+                </span>
+              </div>
             </div>
           </div>
-          <div className={styles.buttons}>
-            <button onClick={showKeyboard} disabled={!isVirtualKeyboardSupported}>
-              show()
-            </button>
-            <button onClick={hideKeyboard} disabled={!isVirtualKeyboardSupported}>
-              hide()
-            </button>
+
+          {/* Virtual Keyboard values */}
+          <div className={styles.valueGroup}>
+            <div className={styles.groupHeader}>
+              <span className={styles.groupLabel}>Virtual Keyboard</span>
+              <span className={isVirtualKeyboardSupported ? styles.supported : styles.unsupported}>
+                {isVirtualKeyboardSupported ? '✓' : '✗'}
+              </span>
+            </div>
+            <div className={styles.valueGrid}>
+              <div className={styles.valueItem}>
+                <span className={styles.label}>rect</span>
+                <span className={styles.value}>
+                  {isVirtualKeyboardSupported
+                    ? `(${keyboardRect?.x ?? 0}, ${keyboardRect?.y ?? 0})`
+                    : 'N/A'}
+                </span>
+              </div>
+              <div className={styles.valueItem}>
+                <span className={styles.label}>size</span>
+                <span className={styles.value}>
+                  {isVirtualKeyboardSupported
+                    ? `${keyboardRect?.width ?? 0}×${keyboardRect?.height ?? 0}`
+                    : 'N/A'}
+                </span>
+              </div>
+              <div className={styles.valueItem}>
+                <span className={styles.label}>overlays</span>
+                <span className={styles.value}>
+                  {isVirtualKeyboardSupported ? (overlaysContent ? 'true' : 'false') : 'N/A'}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* Controls inline */}
+        <div className={styles.controls}>
+          <label className={styles.controlItem}>
+            <input
+              type="checkbox"
+              checked={overlaysContent}
+              onChange={toggleOverlaysContent}
+              disabled={!isVirtualKeyboardSupported}
+            />
+            <span>overlaysContent</span>
+          </label>
+          <label className={styles.controlItem}>
+            <input
+              type="checkbox"
+              checked={keyboardPolicy === 'manual'}
+              onChange={() => setKeyboardPolicy(keyboardPolicy === 'auto' ? 'manual' : 'auto')}
+            />
+            <span>manual policy</span>
+          </label>
+          <button
+            className={styles.smallButton}
+            onClick={showKeyboard}
+            disabled={!isVirtualKeyboardSupported}
+          >
+            show()
+          </button>
+          <button
+            className={styles.smallButton}
+            onClick={hideKeyboard}
+            disabled={!isVirtualKeyboardSupported}
+          >
+            hide()
+          </button>
+        </div>
+
+        <input
+          type="text"
+          className={styles.input}
+          placeholder="Tap to open virtual keyboard..."
+          virtualkeyboardpolicy={keyboardPolicy}
+          onFocus={keyboardPolicy === 'manual' ? showKeyboard : undefined}
+          onBlur={keyboardPolicy === 'manual' ? hideKeyboard : undefined}
+        />
       </section>
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Combined Event Log</h2>
+        <h2 className={styles.sectionTitle}>Event Log</h2>
         <div className={styles.eventLog}>
           {eventLog.length === 0 ? (
             <p className={styles.noEvents}>
-              No events yet. Focus the input below to trigger events.
+              No events yet. Focus the input above to trigger events.
             </p>
           ) : (
             eventLog.map((entry) => (
@@ -336,23 +323,6 @@ export function ViewportKeyboardJoint({ interactiveWidget = 'default' }: Viewpor
             Clear Log
           </button>
         )}
-      </section>
-
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Test Area</h2>
-        <div className={styles.demoArea}>
-          <p className={styles.demoText}>
-            Tap the input below to open the virtual keyboard and observe how both APIs respond.
-          </p>
-          <input
-            type="text"
-            className={styles.input}
-            placeholder="Tap to open virtual keyboard..."
-            virtualkeyboardpolicy={keyboardPolicy}
-            onFocus={keyboardPolicy === 'manual' ? showKeyboard : undefined}
-            onBlur={keyboardPolicy === 'manual' ? hideKeyboard : undefined}
-          />
-        </div>
       </section>
     </div>
   );
